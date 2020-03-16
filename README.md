@@ -14,8 +14,9 @@ During the initial scanning phase, Client sends a Negotiate Protocol Request ask
 
 * #### ***Protocol behaviour, when host is non-exploitable i.e. Win7_x64***
 
+    **PDU Type:** Negotiate Protocol Response (Filter: smb2.cmd == 0 && smb2.flags.response == 1)
+
     ```
-    PDU: Negotiate Protocol Response (Filter: smb2.cmd == 0 && smb2.flags.response == 1)
     Dialect (2 Bytes):                  0x0210 (SMB 2.1)
     NegotiateContextCount (2 bytes):    0x0000
     ```
@@ -29,8 +30,9 @@ During the initial scanning phase, Client sends a Negotiate Protocol Request ask
 
 * #### ***Protocol behaviour, when host is exploitable i.e. Win10_x64 Build 18362***
 
+    **PDU Type:** Negotiate Protocol Response (Filter: smb2.cmd == 0 && smb2.flags.response == 1)
+
     ```
-    PDU: Negotiate Protocol Response (Filter: smb2.cmd == 0 && smb2.flags.response == 1)
     Dialect (2 Bytes):                  0x0311 (SMB 3.1.1)
     NegotiateContextCount (2 bytes):    0x0200 or 0x0300
     ```
