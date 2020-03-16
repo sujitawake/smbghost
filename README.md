@@ -8,42 +8,41 @@ Let's dig little bit deeper to understand what happens when you want to:
 
 
 ## Target identification
------------------------------------
+
 During the initial scanning phase, Client sends a Negotiate Protocol Request asking server about the capabilities of the target Windows workstation to verify whether it supports Data Compression for the subsequent transactions along with a SMB2_COMPRESSION_CAPABILITIES header (24 bytes). Now the target Windows workstation responds back with the host's capabilities which ultimately determines whether this host is exploitable to this bug or not.
 
 
-#### ***Protocol behaviour, when host is non-exploitable i.e. Win7_x64***
+* #### ***Protocol behaviour, when host is non-exploitable i.e. Win7_x64***
 
-```
-PDU: Negotiate Protocol Response (Filter: smb2.cmd == 0 && smb2.flags.response == 1)
-Dialect (2 Bytes):                  0x0210 (SMB 2.1)
-NegotiateContextCount (2 bytes):    0x0000
-```
+    ```
+    PDU: Negotiate Protocol Response (Filter: smb2.cmd == 0 && smb2.flags.response == 1)
+    Dialect (2 Bytes):                  0x0210 (SMB 2.1)
+    NegotiateContextCount (2 bytes):    0x0000
+    ```
 
-> **PCAP:** win7_not_vulnerable.pcap
+    > **PCAP:** win7_not_vulnerable.pcap
 
-Below screenshot demonstates the scanning behavior when a non-vulnerable host is found:
+    Below screenshot demonstates the scanning behavior when a non-vulnerable host is found:
 
-![Vulnerable OS](nonvulnerable_win7.png)
+    ![Vulnerable OS](nonvulnerable_win7.png)
 
 
-#### ***Protocol behaviour, when host is exploitable i.e. Win10_x64 Build 18362***
+* #### ***Protocol behaviour, when host is exploitable i.e. Win10_x64 Build 18362***
 
-```
-PDU: Negotiate Protocol Response (Filter: smb2.cmd == 0 && smb2.flags.response == 1)
-Dialect (2 Bytes):                  0x0311 (SMB 3.1.1)
-NegotiateContextCount (2 bytes):    0x0200 or 0x0300
-```
+    ```
+    PDU: Negotiate Protocol Response (Filter: smb2.cmd == 0 && smb2.flags.response == 1)
+    Dialect (2 Bytes):                  0x0311 (SMB 3.1.1)
+    NegotiateContextCount (2 bytes):    0x0200 or 0x0300
+    ```
 
-> **PCAP:**  win10_vulnerable.pcap
+    > **PCAP:**  win10_vulnerable.pcap
 
-Below screenshot demonstates the scanning behavior when a non-vulnerable host is found:
+    Below screenshot demonstates the scanning behavior when a non-vulnerable host is found:
 
-![Vulnerable OS](vulnerable_win10.png)
+    ![Vulnerable OS](vulnerable_win10.png)
 
 
 ## Triggering the bug/crash
------------------------------------
 
 Once the attacker finds (from the above scanning method) a potential exploitable host, attacker could send a crafted malicious request to trigger the DOS on the target host. Following parameters must hold true to trigger this crash:
 
