@@ -55,7 +55,6 @@ OriginalSize (4 bytes):             Length of compressed SMB3 Data (variable)
 CompressionAlgorithm (2 bytes):     LZNT1 (must be set to 0x0001)
 Reserved (2 bytes):                 0xffff
 Offset (4 bytes):                   0xffffffff (A higher value which means -1 when represented as signed long.)
-
 ```
 
 > **Offset** field is the root cause to trigger crash on the target OS as this field lacks bounds checking while allocating buffer size to hold this data. Subsequently with some more additional effort, RCE should be achievable however as of now, there are no exploit codes available that demonstrates this ability. However we believe it should be available to the public soon.
@@ -74,3 +73,10 @@ Below screenshot demonstrates the attack data used during crash:
 * Crash POC
     * [EeryKitty GitHub](https://github.com/eerykitty/CVE-2020-0796-PoC)
 
+
+## PCAPs
+
+* win7_crash_false.pcap [Win7, no crash]
+* win10_crash_true.pcap [Win10, triggers BSOD]
+* win7_not_vulnerable.pcap [Win7 target scanning, returing result as non-exploitable]
+* win10_vulnerable.pcap [Win10 target scanning, returning result as exploitable]
