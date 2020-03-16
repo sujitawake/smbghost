@@ -1,5 +1,11 @@
 # SMBGhost aka CoronaBlue
 
+Of late Microsoft has released an advisory fixing a critical bug for Windows 10 operating systems. This bug could potentially be used for remote code execution and the fact which makes it even more critical is that, you really don't need to be an authenticated user. Windows7 and older OS variants are not exploitable to this bug. We would recommend to visit this [link](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-0796) and install the patches immediately without any further delay.
+
+Let's dig little bit deeper to understand what happens when you want to:
+1. fingerpint list of potential exploitable hosts
+2. trigger the buffer overflow bug into the target host
+
 
 ## Potential target identification behavior
 ------------------------------
