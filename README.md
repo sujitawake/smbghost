@@ -66,6 +66,14 @@ Below screenshot demonstrates the attack data used during crash:
 ![Win10Crash](crash_pdu.png)
 
 
+## PCAPs
+
+* win7_crash_false.pcap [Win7, no crash]
+* win10_crash_true.pcap [Win10, triggers BSOD]
+* win7_not_vulnerable.pcap [Win7 target scanning, returing result as non-exploitable]
+* win10_vulnerable.pcap [Win10 target scanning, returning result as exploitable]
+
+
 ## Reference
 * Scanner Modules
     * [Nmap scripts](https://github.com/ClarotyICS/CVE2020-0796/tree/master/nse_script)
@@ -74,11 +82,3 @@ Below screenshot demonstrates the attack data used during crash:
         * [Claroty ICS](https://github.com/ClarotyICS/CVE2020-0796/blob/master/python_script/smbv3_compress.py)
 * Crash POC
     * [EeryKitty GitHub](https://github.com/eerykitty/CVE-2020-0796-PoC)
-
-
-## PCAPs
-
-* win7_crash_false.pcap [Win7, no crash]
-* win10_crash_true.pcap [Win10, triggers BSOD]
-* win7_not_vulnerable.pcap [Win7 target scanning, returing result as non-exploitable]
-* win10_vulnerable.pcap [Win10 target scanning, returning result as exploitable]
